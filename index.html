@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/master//css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/master//css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://cdn.rawgit.com/hakimel/reveal.js/master//css/print/pdf.css' : 'https://cdn.rawgit.com/hakimel/reveal.js/master//css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://cdn.rawgit.com/hakimel/reveal.js/master//lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="how-continuous-integration-and-delivery-can-accelerate-your-process" class="slide level1">
+<h1>How Continuous Integration and Delivery can accelerate your process</h1>
+<p>Alex Kessinger, Software Architect @ bepress</p>
+</section>
+<section id="agenda" class="slide level1">
+<h1>Agenda</h1>
+<ul>
+<li>The Goal</li>
+<li>How do we achieve the goal</li>
+<li>How does CI/CD help achieve the goal</li>
+<li>Examples of CI/cd</li>
+<li>Small projects, single person</li>
+<li>small projects, open source</li>
+<li>Small projects, company</li>
+</ul>
+</section>
+<section id="whats-the-goal" class="slide level1">
+<h1>What's the goal?</h1>
+<p>The goal is to:</p>
+<ul>
+<li>Reduce the risk of deployment</li>
+<li>Increase flow of value to users</li>
+<li>Increase time spent on value-producing features</li>
+<li>Maximize the productivity of IT staff</li>
+<li>Increase satisfaction</li>
+</ul>
+<aside class="notes">
+<p>What is the goal?</p>
+<p>This is the developer track at the open repositories conference in 2017. I guess that none of us are working on Boeing guidance systems or heart monitors.</p>
+<p>Most likely, we are building apps, or websites.</p>
+<p>We are probably apart of some unique rube goldberg machine that we call software. Somewhere our their is a human and, they are trying to use our software … too do something.</p>
+<p>If we are unlucky, that user is quietly resenting their computer, and wishing their boss had bought somethign else.</p>
+<p>If we are doing okay, they might not even notice our software.</p>
+<p>If we are doing great, they might love what we make. They might love it so much they tell other people about how great our software is.</p>
+<p>Our goal is to at least be okay, if not great.</p>
+<p>Our goal is deliver something valuable to our users.</p>
+<p>The power of simple goals like this, and many others, some of which I have listed here is that they can align an entire organization. IT/Engineering/&quot;The Business&quot;/&quot;The Management&quot; they can all agree that delivering value to your users is good, and should be a goal.</p>
+<p>Today, I want to talk to you about Continuous integration, and delivery. I want to talk to you about how these ideas can not only help you deliver value, but how they can accelerate that process. And, it might even make your day to day work a little more fun.</p>
+</aside>
+</section>
+<section id="risk" class="slide level1">
+<h1>Risk</h1>
+<ul>
+<li>Deployment Risk</li>
+<li>Integration Risk</li>
+<li>Feature Risk</li>
+</ul>
+<aside class="notes">
+<p>Everywhere you look, you can see risk. From the mundanne risk that we deal with everyday like How's the deploy going to work today? How are the servers doing? Will Our users like this new feature.</p>
+<p>To the existential, how will we continue to be valuable to our customers, what happens if our industry fundamentally changes and we are no longer needed.</p>
+<p>I think it's easy in the face of risk to be both cavalier, and fatalisitc, neither of which are helpful attitudesd when it comes to the day to day work of creating software.</p>
+<p>So, we could fret about risk, or we could make it core to our process. We could embrace the fact that the only certain thing is uncertaintiy.</p>
+</aside>
+</section>
+<section id="the-only-certain-thing-is-uncertainty" class="slide level1">
+<h1>the only certain thing is uncertainty</h1>
+<aside class="notes">
+<p>So, if we embrace uncertaintiy, and we embrace risk. We can start to ask: How do we systemically minimize the impact of risk and uncertainty.</p>
+<p>Personally, when I finally understood this, it was freeing.</p>
+<p>I worked with CI and CD systems for a long time before I understood why they were helpful. Before I actually dug in and did the work to understand the buisness value. All I knew was that I felt better when I used them, the team's I worked on seemed to get a lot done.</p>
+<p>It wasn't until I did the work that I realized that spending a lot of time on the delivery of software isn't a luxury, it needs to be a core buissness value. The process of delivering the code is just as important as the code it's self.</p>
+</aside>
+</section>
+<section id="risk-meet-science" class="slide level1">
+<h1>Risk meet Science</h1>
+<p>Hypothesis + Experiment = Learning</p>
+<aside class="notes">
+<p>The only real cure for risk is science. Specifically the scientific method.</p>
+<p>We need to formulate hypothesis, run experiements, and then learn a little bit.</p>
+<p>This is super general, but it is the core of this whole process. It's the guiding force that underlines all the other things I am going to talk about.</p>
+<p>If you taking nothing away from this talk take this.</p>
+<p>The rate at which you can experiment is the rate at which you can learn. If you can learn faster then others, you have an advantage.</p>
+</aside>
+</section>
+<section id="dont-invent-everything-though" class="slide level1">
+<h1>Don't invent everything though</h1>
+<aside class="notes">
+<p>Fortunatley, we don't need to invent the whole science. There are lots of other people who are focuings on speeding up experimentation cycles. We can use their work.</p>
+<p>Not only can we use others work, we can use the work that people have put in to other industries.</p>
+<p>There is actually an intersting history around applying other industries best practices to our own.</p>
+<p>For instance, did you know that the philisophical ancestory of capitale-A agile, is from manfuacting?</p>
+</aside>
+</section>
+<section id="quick-history" class="slide level1">
+<h1>Quick History</h1>
+<p>The philosophical origin of Continuous Integration and Devilry is almost 100 Yeas old, far before &quot;IT&quot; was ever a thing.</p>
+<p>In some sense, that's why it's so powerful these ideas have been tested, again and again and continue to demonstrate results, even when they are applied to more abstract processes like software development.</p>
+<aside class="notes">
+<p>Many of todays continuous integration, and delivery practices are highly influenced by the lean manufacturing movement, which in turn was highly influenced by various manfuacting philosophies developed in Japan after WW2, which was influenced by this guy Edward Deming.</p>
+</aside>
+</section>
+<section id="definitions" class="slide level1">
+<h1>definitions</h1>
+<h2 id="continuous-integration">Continuous Integration:</h2>
+</section>
+<section id="maturity-model" class="slide level1">
+<h1>Maturity Model</h1>
+<figure>
+<img src="Maturity%20Modely" alt="https://cdn.infoq.com/statics_s2_20170214-0417_2/resource/articles/Continuous-Delivery-Maturity-Model/en/resources/fig1large.jpg" /><figcaption>https://cdn.infoq.com/statics_s2_20170214-0417_2/resource/articles/Continuous-Delivery-Maturity-Model/en/resources/fig1large.jpg</figcaption>
+</figure>
+<p>https://www.infoq.com/articles/Continuous-Delivery-Maturity-Model</p>
+<figure>
+<img src="Maturity%20model" alt="http://blog.arungupta.me/continuous-integration-delivery-deployment-maturity-model/" /><figcaption>http://blog.arungupta.me/continuous-integration-delivery-deployment-maturity-model/</figcaption>
+</figure>
+<p>http://blog.arungupta.me/continuous-integration-delivery-deployment-maturity-model/</p>
+<figure>
+<img src="Maturity%20Model" alt="https://developer.ibm.com/urbancode/docs/continuous-delivery-maturity-model/" /><figcaption>https://developer.ibm.com/urbancode/docs/continuous-delivery-maturity-model/</figcaption>
+</figure>
+<p>https://developer.ibm.com/urbancode/docs/continuous-delivery-maturity-model/</p>
+<p>I like this last one because it talks about where the community is and where the target is.</p>
+</section>
+<section id="how-do-we-achieve-the-goal" class="slide level1">
+<h1>How do we achieve the goal?</h1>
+<ol type="1">
+<li>Focus on end-to-end flow</li>
+<li>Fast Feedback</li>
+<li>Continuous Improvement</li>
+</ol>
+<aside class="notes">
+<p>These are known as the 3 ways</p>
+</aside>
+</section>
+<section id="risk-vs-reward" class="slide level1">
+<h1>Risk vs Reward</h1>
+<ul>
+<li>Every new feature is a risk</li>
+<li>Every change can break old features</li>
+<li>Every line of code is an investment</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<ul>
+<li>Reduce risk</li>
+<li><hr /></li>
+</ul>
+</section>
+<section id="how-does-ci-provide" class="slide level1">
+<h1>how does CI provide</h1>
+<ul>
+<li>Unit test on each commit</li>
+<li>Offers fast feed back</li>
+<li>A precommit check will keep your trunk clean</li>
+<li>allowed developers to build conventions through lint</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p>I think the goal is for users to derive value from our software. And, for that value to grow over time.</p>
+</section>
+<section id="how-do-we-create-value" class="slide level1">
+<h1>how do we create value?</h1>
+<ol type="1">
+<li>Create New valuable features</li>
+<li>Maintains existing valuable features</li>
+<li>Remove non-valuable features</li>
+<li>Continuously improve the process for delivering value</li>
+</ol>
+<p>The goal of software is usually to deliver value to users.</p>
+<p>If you are google, customers should be able to search If you are twitter, people should be able to tweet If you are a repository people should be able to deposit things.</p>
+</section>
+<section id="value-is" class="slide level1">
+<h1>value is</h1>
+<ul>
+<li>is multifaceted</li>
+<li>Value is created through investment</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="https://cdn.rawgit.com/hakimel/reveal.js/master//lib/js/head.min.js"></script>
+  <script src="https://cdn.rawgit.com/hakimel/reveal.js/master//js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Vertical centering of slides
+        center: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://cdn.rawgit.com/hakimel/reveal.js/master//lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://cdn.rawgit.com/hakimel/reveal.js/master//plugin/zoom-js/zoom.js', async: true },
+              { src: 'https://cdn.rawgit.com/hakimel/reveal.js/master//plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
